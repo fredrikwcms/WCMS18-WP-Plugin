@@ -59,6 +59,11 @@ register_activation_hook( __FILE__, 'activate_spotify_new_releases' );
 register_deactivation_hook( __FILE__, 'deactivate_spotify_new_releases' );
 
 /**
+ * The credentials needed for Spotify Web API.
+ */
+require plugin_dir_path( __FILE__ ) . '/credentials.php';
+
+/**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
