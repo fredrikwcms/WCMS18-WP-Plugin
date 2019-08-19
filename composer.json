@@ -1,0 +1,12 @@
+{
+    "name": "drblue/spotify-new-releases",
+    "authors": [
+        {
+            "name": "Johan Nordström",
+            "email": "johan@digitalvillage.se"
+        }
+    ],
+    "require": {
+        "jwilsson/spotify-web-api-php": "^2.9"
+    }
+}

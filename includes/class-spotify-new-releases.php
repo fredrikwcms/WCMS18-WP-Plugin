@@ -129,6 +129,11 @@ class Spotify_New_Releases {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-spotify-new-releases-widget.php';
 
+		/**
+		 * The class responsible for communicating with the Spotify API.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-spotify-api.php';
+
 		$this->loader = new Spotify_New_Releases_Loader();
 
 	}

@@ -48,6 +48,9 @@ class Spotify_New_Releases_Widget extends WP_Widget {
 			</div>
 		<?php
 
+		$spotify_api = new SpotifyAPI(SPOTIFY_NEW_RELEASES_CLIENT_ID, SPOTIFY_NEW_RELEASES_CLIENT_SECRET);
+		$new_releases = $spotify_api->getNewReleases();
+
 		// close widget
 		echo $after_widget;
 	}
