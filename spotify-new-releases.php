@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Spotify New Releases
  * Plugin URI:        https://thehiveresistance.com/spotify-new-releases
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       A plugin that adds a widget for displaying the latest releases on Spotify.
  * Version:           1.0.0
  * Author:            Johan Nordström
  * Author URI:        https://thehiveresistance.com
