@@ -1,0 +1,13 @@
+1. När widget visas i sidebar så ska en asynkron request gå iväg till WordPress AJAX API med en förfrågan om de senaste låtarna.
+
+	2. WordPress AJAX API ska ta emot förfrågan om de senaste låtarna.
+
+		3. WordPress AJAX API ska upprätta en anslutning mot Spotify API.
+
+			4. WordPress AJAX API ska autentisera mot Spotify API med hjälp av Client-ID + Client-Secret och få en Access-Token.
+
+		5. WordPress AJAX API ska med hjälp av Access-Token skicka fråga till Spotify API med fråga om de senaste låtarna.
+
+	6. WordPress AJAX API ska tolka svaret från Spotify API, hämta ut nödvändig data och därefter skicka ett svar på den asynkrona request:en i steg 1.
+
+7. Widget:en tar emot svaret på den asynkrona request:en och i sin tur tolkar svaret och renderar HTML-kod utifrån innehållet i svaret.
