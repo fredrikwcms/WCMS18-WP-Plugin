@@ -80,7 +80,7 @@ class Spotify_New_Releases {
 		$this->define_public_hooks();
 
 		$this->register_widget();
-
+		$this->register_ajax_actions();
 	}
 
 	/**
@@ -197,7 +197,18 @@ class Spotify_New_Releases {
 			register_widget('Spotify_New_Releases_Widget');
 		});
 	}
-
+	public function register_ajax_actions()
+	{
+		// register action 'spotify_new_releases__get'
+		add_action('wp_ajax_spotify_new_releases__get', [
+			$this,
+			'ajax_spotify_new_releases__get',
+		]);
+		add_action('wp_ajax_nopriv_spotify_new_releases__get', [
+			$this,
+			'ajax_spotify_new_releases__get',
+		]);
+	}
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
@@ -237,5 +248,46 @@ class Spotify_New_Releases {
 	public function get_version() {
 		return $this->version;
 	}
+	public function ajax_spotify_new_releases__get()
+    {
+        $response = new SpotifyAPI(
+            SPOTIFY_NEW_RELEASES_CLIENT_ID,
+            SPOTIFY_NEW_RELEASES_CLIENT_SECRET
+        );
+        $body = $response->getNewReleases();
+        $album_one = [];
+        $album_two = [];
+        $album_three = [];
+        array_push(
+            $album_one,
+            $body->albums->items[0]->artists[0]->name,
+            $body->albums->items[0]->album_type,
+            $body->albums->items[0]->name,
+            $body->albums->items[0]->external_urls->spotify,
+            $body->albums->items[0]->images[1]->url
+        );
+        array_push(
+            $album_two,
+            $body->albums->items[1]->artists[0]->name,
+            $body->albums->items[1]->album_type,
+            $body->albums->items[1]->name,
+            $body->albums->items[1]->external_urls->spotify,
+            $body->albums->items[1]->images[1]->url
+        );
+        array_push(
+            $album_three,
+            $body->albums->items[2]->artists[0]->name,
+            $body->albums->items[2]->album_type,
+            $body->albums->items[2]->name,
+            $body->albums->items[2]->external_urls->spotify,
+            $body->albums->items[2]->images[1]->url
+        );
+        wp_send_json_success([
+            'album_one' => $album_one,
+            'album_two' => $album_two,
+            'album_three' => $album_three,
+        ]);
+    }
+
 
 }

@@ -35,6 +35,11 @@ class SpotifyAPI {
 		$api->setAccessToken($this->getAccessToken());
 
 		$new_releases = $api->getNewReleases(['country' => 'SE']);
-		var_dump($new_releases);
+		//var_dump($new_releases);
+		return $new_releases;
 	}
 }
+
+
+
+

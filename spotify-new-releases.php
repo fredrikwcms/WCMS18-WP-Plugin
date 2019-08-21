@@ -90,3 +90,15 @@ function run_spotify_new_releases() {
 
 }
 run_spotify_new_releases();
+
+function enqueue_scripts()
+    {
+         wp_localize_script($this->plugin_name, 'Spotify_New_Releases', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+        ]);
+    }
+
+
+
+
+
